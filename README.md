@@ -28,7 +28,7 @@ The required material for the laboratories is contained in the `material` folder
 ## Virtual Machine
 In addition, if you don't feel confident setting up the environment on your own, a virtual machine with all the requirements installed, tested and with this repository already cloned has been created. It can be downloaded at the following link:
 
-[Virtual Machine with Ubuntu 18.04 LTS (Bionic Beaver)]()
+[Virtual Machine with Ubuntu 18.04 LTS (Bionic Beaver)](https://drive.google.com/file/d/1hM7yyGQFYz8uBqnL3exvwud9N7liNqdk/view?usp=sharing)
 
 VM credentials:
 - **USER**: mmlab
