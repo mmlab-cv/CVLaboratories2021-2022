@@ -49,7 +49,7 @@ Inside the Virtual Machine there will also be a compiled and working version of 
 > - *4*: Ask a colleague for help, teamwork always wins 
 > - *5*: Beg a colleague for help, he/she does not bite, at most you will be asked money
 > - *6*: Google it one last time, it never hurts
-> - *7*: Ask the TA for help, show that you tried and help will be provided
+> - *7*: Ask the teaching assistant for help, show that you tried and help will be provided
 
-> **NOTE3** If you feel confident with coding/git/computer science in general you can avoid using the VM and setup the environment on your local machine, following the above explained steps. Please note that very little help will be provided by the TA in this case
+> **NOTE3** If you feel confident with coding/git/computer science in general you can avoid using the VM and setup the environment on your local machine, following the above explained steps. Please note that very little help will be provided by the teaching assistant in this case
 
