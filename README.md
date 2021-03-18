@@ -41,13 +41,13 @@ Inside the Virtual Machine there will also be a compiled and working version of 
 > **NOTE1:** For those of you who are not familiar with GitHub, be careful when performing the `pull` action from the repository! Before  doing it, move the code you wrote to another folder or you will lose its content. The `pull` action will overwrite everything there is inside it.
 
 > **NOTE2:** If you experience any kind of trouble running the VirtualMachine do the following steps:
-> *1*: https://lmgtfy.app/?q=how+to+run+a+virtual+machine
-> *2*: Google it again, maybe with a smarter choice of words. 
-> *3*: Maybe you should check this [link](https://support.google.com/websearch/answer/134479?hl=en) out! Or maybe [this](https://www.pcmag.com/how-to/23-google-search-tips-youll-want-to-learn) one!
-> *4*: Ask a colleague for help, teamwork always wins 
-> *5*: Beg a colleague for help, he/she does not bite, at most you will be asked money
-> *6*: Google it one last time, it never hurts
-> *7*: Ask the TA for help, show that you tried and help will be provided
+> - *1*: https://lmgtfy.app/?q=how+to+run+a+virtual+machine
+> - *2*: Google it again, maybe with a smarter choice of words. 
+> - *3*: Maybe you should check this [link](https://support.google.com/websearch/answer/134479?hl=en) out! Or maybe [this](https://www.pcmag.com/how-to/23-google-search-tips-youll-want-to-learn) one!
+> - *4*: Ask a colleague for help, teamwork always wins 
+> - *5*: Beg a colleague for help, he/she does not bite, at most you will be asked money
+> - *6*: Google it one last time, it never hurts
+> - *7*: Ask the TA for help, show that you tried and help will be provided
 
 > **NOTE3** If you feel confident with coding/git/computer science in general you can avoid using the VM and setup the environment on your local machine, following the above explained steps. Please note that very little help will be provided by the TA in this case
 
