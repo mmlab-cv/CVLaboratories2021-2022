@@ -5,15 +5,17 @@ Please arrive at the lectures with the repository up-to-date on your machine, so
 
 ## Requirements
 The laboratory exercises will all be written in Python (v3.6 or higher, with VisualStudioCode as IDE) and the following packages will be required:
-	- OpenCV with contrib
-	- Numpy (should be already installed as OpenCV dependency)
-	- Open3D for the PointCloud/Mesh section
+- OpenCV with contrib
+- Numpy (should be already installed as OpenCV dependency)
+- Open3D for the PointCloud/Mesh section
 
 In order to install a Python package, you need to use the `pip` package manager (`pip3` if you are using the `python3` command) with this command: `pip install *package_name*`. The names of the required packages are:
 - `opencv-python`
 - `opencv-contrib`
 - `numpy`
 - `open3d`
+
+If you feel confident you can install them on your own machine.
 
 ## Material
 
@@ -24,7 +26,7 @@ The required material for the laboratories is contained in the `material` folder
 - `bunny`: folder containing the Bunny mesh of the Standford 3D Scanning Repository
 
 ## Virtual Machine
-In addition, a virtual machine with all the requirements installed and tested as well as with this repository already cloned has been created. It can be downloaded at the following link:
+In addition, if you don't feel confident setting up the environment on your own, a virtual machine with all the requirements installed, tested and with this repository already cloned has been created. It can be downloaded at the following link:
 
 [Virtual Machine with Ubuntu 18.04 LTS (Bionic Beaver)]()
 
