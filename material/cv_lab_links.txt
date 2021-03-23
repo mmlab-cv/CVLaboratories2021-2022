@@ -1,8 +1,8 @@
 ### USEFUL LINKS
 
 https://github.com/opencv
-https://docs.opencv.org/4.1.2/
-https://docs.opencv.org/master/d6/d00/tutorial_py_root.html
+https://docs.opencv.org/4.1.2/ #C++ documentation
+https://docs.opencv.org/master/d6/d00/tutorial_py_root.html #python documentation
 http://www.open3d.org
 http://www.open3d.org/docs/release/
 
