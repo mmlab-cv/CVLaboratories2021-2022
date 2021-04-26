@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 2.8)
+project( GFF+LK )
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+include_directories( ${PROJECT_SOURCE_DIR} )
+add_executable( GFF+LK GFF+LK.cpp )
+target_link_libraries( GFF+LK ${OpenCV_LIBS} )

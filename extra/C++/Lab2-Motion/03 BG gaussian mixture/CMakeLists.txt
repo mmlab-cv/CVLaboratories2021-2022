@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 2.8)
+project( MOG )
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+include_directories( ${PROJECT_SOURCE_DIR} )
+add_executable( MOG bgMOG.cpp )
+target_link_libraries( MOG ${OpenCV_LIBS} )
