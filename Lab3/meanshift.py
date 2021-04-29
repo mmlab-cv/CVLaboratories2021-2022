@@ -10,7 +10,7 @@ cap = cv2.VideoCapture("/home/mmlab/workspace/CVLaboratories/material/Video.mp4"
 ret,frame = cap.read()
 
 # setup initial location of window
-c, r, w, h = cv2.selectROI('img2', frame, showCrosshair=False)
+x, y, w, h = cv2.selectROI('img2', frame, showCrosshair=False)
 #r,h,c,w = 250,90,400,125  # simply hardcoded the values
 track_window = (x,y,w,h)
 
