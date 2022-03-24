@@ -1,5 +1,5 @@
 # Computer Vision Laboratories
-Welcome to the Computer Vision 2021 laboratories GitHub repository. Here you will find all the information and the material needed for the laboratories lectures that will come.
+Welcome to the Computer Vision 2022 laboratories GitHub repository. Here you will find all the information and the material needed for the laboratories lectures that will come.
 The repository will be updated periodically with the material for the current lab. 
 Please arrive at the lectures with the repository up-to-date on your machine, so that lectures can flow smoothly.
 
@@ -11,7 +11,7 @@ The laboratory exercises will all be written in Python (v3.6 or higher, with Vis
 
 In order to install a Python package, you need to use the `pip` package manager (`pip3` if you are using the `python3` command) with this command: `pip install *package_name*`. The names of the required packages are:
 - `opencv-python`
-- `opencv-contrib`
+- `opencv-contrib-python`
 - `numpy`
 - `open3d`
 
@@ -20,8 +20,8 @@ If you feel confident you can install them on your own machine.
 ## Material
 
 The required material for the laboratories is contained in the `material` folder on the root of this repository. Inside, you will find:
-- `video.mp4`: test video
-- `google.jpg`: test image
+- `Video.mp4`: test video
+- `Google.jpg`: test image
 - `00001640.ply`: a PointCloud of the Panoptic dataset
 - `bunny`: folder containing the Bunny mesh of the Standford 3D Scanning Repository
 
