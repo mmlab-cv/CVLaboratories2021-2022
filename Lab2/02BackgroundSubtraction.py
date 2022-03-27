@@ -2,36 +2,63 @@ import numpy as np
 import cv2
 
 
-def bg_update(frame_gray,bg):
-    alfa = 0.05
-    bg = np.uint8(bg*(1-alfa) + alfa*frame_gray)
-    #bg = frame_gray
+def bg_update(current_frame, prev_bg, alpha):
+    bg = alpha * current_frame + (1 - alpha) * prev_bg
+
+    # print(f"Background dtype (before): {bg.dtype}")
+    # print(f"Background dtype (after): {bg.dtype}")
+
+    bg = np.uint8(bg)
+    
     return bg
 
+background = None
+MAX_FRAMES = 1000
+THRESH = 50
+MAXVAL = 255
+ALPHA = 0.05
 
+webcam = False
 
-# cap = cv2.VideoCapture(0)
-cap = cv2.VideoCapture("../material/Video.mp4")
-background = []
+if webcam:
+    cap = cv2.VideoCapture(0)
+else:
+    cap = cv2.VideoCapture("../material/Video.mp4")
+    
 
-for i in range(1000):
+for t in range(MAX_FRAMES):
     # Capture frame-by-frame
     ret, frame = cap.read()
-    #color conversion
-    frame_gray = cv2.cvtColor(frame,cv2.COLOR_RGB2GRAY)    
+
+    # If video end reached
+    if not ret:
+        break
+
+    # Convert frame to grayscale
+    frame_gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)    
     
-    if i == 0:
-        #train background with first frame
+    if t == 0:
+        # Train background with first frame
         background = frame_gray
     else:
-        #bg subtraction
+        # Background subtraction
         diff = cv2.absdiff(background, frame_gray)
-        #mask thresholding
-        ret2, motion_mask = cv2.threshold(diff,50,255,cv2.THRESH_BINARY)
-        #update background
-        background = bg_update(frame_gray,background)
-        # Display the resulting frame
-        cv2.imshow('frame',frame)
-        cv2.imshow('motion_mask',motion_mask)
-        cv2.imshow('Background',background)
-        cv2.waitKey(1)
+
+        # Mask thresholding
+        ret, motion_mask = cv2.threshold(diff, THRESH, MAXVAL, cv2.THRESH_BINARY)
+
+        # Update background
+        background = bg_update(frame_gray, background, alpha = ALPHA)
+
+        # Display the resulting frames
+        cv2.imshow('Frame', frame)
+        cv2.imshow('Motion mask', motion_mask)
+        cv2.imshow('Background', background)
+        
+        # Wait and exit if q is pressed
+        if cv2.waitKey(1) == ord('q') or not ret:
+            break
+
+# When everything done, release the capture
+cap.release()
+cv2.destroyAllWindows()
