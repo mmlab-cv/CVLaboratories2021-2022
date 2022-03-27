@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 #cap = cv2.VideoCapture(0)
-cap = cv2.VideoCapture("/home/mmlab/workspace/CVLaboratories/material/Video.mp4")
+cap = cv2.VideoCapture("../material/Video.mp4")
 frames = []
 nf = 5
 

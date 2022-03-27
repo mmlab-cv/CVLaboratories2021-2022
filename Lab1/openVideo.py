@@ -10,7 +10,7 @@ for i in range(100):
 
     # Display the resulting frame
     cv2.imshow('Frame',frame)
-    cv2.imwrite(f'frames/frame{i}.jpg',frame)
+    cv2.imwrite(f'frames/frame_{i}.jpg',frame)
     cv2.waitKey(1)
 
 

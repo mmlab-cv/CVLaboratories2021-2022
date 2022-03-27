@@ -1,8 +1,8 @@
 import numpy as np
 import cv2
 
-cap = cv2.VideoCapture(0)
-#cap = cv2.VideoCapture("/home/mmlab/workspace/CVLaboratories/material/Video.mp4")
+# cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("../material/Video.mp4")
 
 learningRate = -1
 history = 200
@@ -10,8 +10,8 @@ nmixtures = 200
 backgroundRatio = 0.5
 noiseSigma = 1
 
-fgbg = cv2.bgsegm.createBackgroundSubtractorMOG(history,nmixtures,backgroundRatio,noiseSigma)
-#fgbg = cv2.createBackgroundSubtractorMOG2()
+# fgbg = cv2.bgsegm.createBackgroundSubtractorMOG(history,nmixtures,backgroundRatio,noiseSigma)
+fgbg = cv2.createBackgroundSubtractorMOG2()
 
 
 for i in range(1000):

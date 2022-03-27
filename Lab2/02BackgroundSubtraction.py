@@ -10,8 +10,8 @@ def bg_update(frame_gray,bg):
 
 
 
-cap = cv2.VideoCapture(0)
-#cap = cv2.VideoCapture("/home/mmlab/workspace/CVLaboratories/material/Video.mp4")
+# cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("../material/Video.mp4")
 background = []
 
 for i in range(1000):
