@@ -4,7 +4,7 @@ import cv2
 image_path = "../material/OpenCV.png"
 
 # Define how to read the image (color, grayscale, color + alpha)
-image_flag = cv2.IMREAD_COLOR
+image_flag = cv2.IMREAD_UNCHANGED
 
 # cv2.IMREAD_COLOR: It specifies to load a color image. Any transparency of image will be neglected. It is the default flag. Alternatively, we can pass integer value 1 for this flag.
 # cv2.IMREAD_GRAYSCALE: It specifies to load an image in grayscale mode. Alternatively, we can pass integer value 0 for this flag.

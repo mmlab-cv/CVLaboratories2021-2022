@@ -2,15 +2,15 @@ import numpy as np
 import cv2
 
 frames = []
-N = 10
+N = 1
 MAX_FRAMES = 1000
 THRESH = 50
 MAXVAL = 255
 
-webcam = False
+webcam = True
 
 if webcam:
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
 else:
     cap = cv2.VideoCapture("../material/Video.mp4")
 
@@ -23,7 +23,7 @@ for t in range(MAX_FRAMES):
         break
     
     # Convert frame to grayscale and append to list of frames
-    frame_gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
+    frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     frames.append(frame_gray)
 
     if t >= N:
