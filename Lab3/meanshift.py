@@ -3,60 +3,69 @@ import cv2
 
 from matplotlib import pyplot as plt
 
-#cap = cv2.VideoCapture(0)
-cap = cv2.VideoCapture("/home/mmlab/workspace/CVLaboratories/material/Video.mp4")
+webcam = True
+PLOT_HIST = False
+USE_CAMSHIFT = True
+
+if webcam:
+    cap = cv2.VideoCapture(1)
+else:
+    cap = cv2.VideoCapture("../material/Video.mp4")
 
 # take first frame of the video
 ret,frame = cap.read()
 
 # setup initial location of window
-x, y, w, h = cv2.selectROI('img2', frame, showCrosshair=False)
+x, y, w, h = cv2.selectROI('Frame', frame, showCrosshair=False)
 #r,h,c,w = 250,90,400,125  # simply hardcoded the values
-track_window = (x,y,w,h)
+track_window = (x, y, w, h)
 
-# set up the ROI for tracking
-roi = frame[x:x+w, y:y+h]
+# Set up the ROI for tracking
+roi = frame[y:y+h, x:x+w]
 hsv_roi =  cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
-mask = cv2.inRange(hsv_roi, np.array((0., 60.,32.)), np.array((180.,255.,255.)))
-roi_hist = cv2.calcHist([hsv_roi],[0],mask,[180],[0,180])
-cv2.normalize(roi_hist,roi_hist,0,255,cv2.NORM_MINMAX)
+mask = cv2.inRange(hsv_roi, np.array((0., 60., 32.)), np.array((180., 255., 255.)))
+roi_hist = cv2.calcHist([hsv_roi], [0], mask, [180], [0,180])
+cv2.normalize(roi_hist, roi_hist, 0, 255, cv2.NORM_MINMAX)
 
-#histogram plotting
-#hist_full = cv2.calcHist([frame],[0],None,[256],[0,256])
-#plt.subplot(221), plt.imshow(frame, 'gray')
-#plt.subplot(222), plt.imshow(mask,'gray')
-#plt.subplot(223), plt.imshow(roi, 'gray')
-#plt.subplot(224), plt.plot(hist_full), plt.plot(roi_hist)
-#plt.xlim([0,256])
-#plt.show()
+# Histogram plotting
+if PLOT_HIST:
+    hist_full = cv2.calcHist([frame], [0], None, [256], [0,256])
+    plt.subplot(221), plt.imshow(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+    plt.subplot(222), plt.imshow(mask, cmap='gray')
+    plt.subplot(223), plt.imshow(cv2.cvtColor(roi, cv2.COLOR_BGR2RGB))
+    plt.subplot(224), plt.plot(hist_full), plt.plot(roi_hist)
+    plt.xlim([0, 256])
+    plt.show()
 
-# Setup the termination criteria, either 10 iteration or move by atleast 1 pt
-term_crit = ( cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 1 )
+# Setup the termination criteria, either 10 iteration or move by at least 1 pt
+term_crit = ( cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 1)
 
 while(1):
     ret ,frame = cap.read()
 
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    dst = cv2.calcBackProject([hsv],[0],roi_hist,[0,180],1)
+    dst = cv2.calcBackProject([hsv], [0], roi_hist, [0, 180], 1)
 
     # apply meanshift to get the new location
-    ret, track_window = cv2.meanShift(dst, track_window, term_crit)
-    # ret, track_window = cv2.CamShift(dst, track_window, term_crit)
+    if USE_CAMSHIFT:
+        ret, track_window = cv2.CamShift(dst, track_window, term_crit)
 
-    # Draw it on image
-    x,y,w,h = track_window
-    img2 = cv2.rectangle(frame, (x,y), (x+w,y+h), 255,2)
+        # Draw it on image
+        pts = cv2.boxPoints(ret).astype(int)
+        frame = cv2.polylines(frame, [pts], True, 255, 2)
+    else:
+        ret, track_window = cv2.meanShift(dst, track_window, term_crit)
 
-    # pts = cv2.boxPoints(ret)
-    # pts = np.int0(pts)
-    # img2 = cv2.polylines(frame,[pts],True, 255,2)
+        # Draw it on image
+        x,y,w,h = track_window
+        frame = cv2.rectangle(frame, (x,y), (x+w, y+h), 255, 2)
 
-    cv2.imshow('img2',img2)
-    cv2.imshow('dst',dst)
+    cv2.imshow('Frame', frame)
+    cv2.imshow('dst', dst)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'): #close video is q is pressed
+    # Wait and exit if q is pressed
+    if cv2.waitKey(1) == ord('q'):
         break
-
 
 cv2.destroyAllWindows()
 cap.release()
