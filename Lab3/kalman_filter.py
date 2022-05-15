@@ -30,22 +30,26 @@ cv2.setMouseCallback("Kalman", mousemove)
 
 # Dynamic parameters(4/6) and measurement parameters (2)
 kalman = cv2.KalmanFilter(4,2)
+# H
 kalman.measurementMatrix = \
     np.array([
         [1,0,0,0],
         [0,1,0,0]], np.float32)
+# A
 kalman.transitionMatrix = \
     np.array([
         [1,0,1,0],
         [0,1,0,1],
         [0,0,1,0],
         [0,0,0,1]], np.float32)
-kalman.processNoiseCov = \
+# w
+kalman.processNoiseCov = \ 
     np.array([
         [1,0,0,0],
         [0,1,0,0],
         [0,0,1,0],
         [0,0,0,1]], np.float32) * 0.003
+# v
 kalman.measurementNoiseCov = \
     np.array([
         [1,0],
